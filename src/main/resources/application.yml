@@ -1,0 +1,43 @@
+logging:
+ level:
+  org.hibernate.SQL: DEBUG
+  org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  
+app:
+ base: http://localhost:8080/
+ client:
+  id: ecommercetest
+  secret: ecommercetest
+
+spring:
+ profiles:
+  active: local
+  
+ mvc:
+  format:
+    date: yyyy-MM-dd
+    date-time: yyyy-MM-dd-HH:mm:ss
+    time: HH:mm:ss
+
+ datasource:
+  url: jdbc:h2:mem:ecommercetest;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  platform: h2
+  username: sa
+  password:
+  driverClassName: org.h2.Driver
+  initialization-mode: always
+  testWhileIdle: true
+  validationQuery: SELECT 1
+ jpa:
+  properties:
+   hibernate:
+    default_schema: ecommercetest
+  hibernate:
+   ddl-auto: validate
+   naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+   database-platform: org.hibernate.dialect.H2Dialect
+  show-sql: true      
+  flyway:
+    enabled: false
+
+

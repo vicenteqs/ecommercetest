@@ -1,0 +1,37 @@
+logging:
+  level:
+    org.springframework: INFO
+
+app:
+ base: http://localhost:8080/
+ client:
+  id: ecommercetest
+  secret: ecommercetest
+
+spring:
+  profiles:
+    active: test
+  flyway:
+    enabled: true
+  datasource:
+   url: jdbc:h2:mem:ecommercetest-testing;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+   platform: h2
+   username: sa
+   password:
+   driverClassName: org.h2.Driver
+   initialization-mode: always
+  jpa:
+   properties:
+    hibernate:
+     default_schema: ecommercetest
+   hibernate:
+    ddl-auto: validate
+    naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    database-platform: org.hibernate.dialect.H2Dialect
+   show-sql: true      
+
+   mvc:
+    format:
+      date: yyyy-MM-dd
+      date-time: yyyy-MM-dd-HH:mm:ss
+      time: HH:mm:ss       
